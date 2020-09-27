@@ -10,11 +10,18 @@ window.onload = function init(){
 		alert( "WebGL isn't available" );
 	}
       //三角形
-      var vertices = [
-      -1.0,-1.0,
-      1.0,-1.0,
-      0.0,1.0,
-      ];
+      //var vertices = [
+      //-1.0,-1.0,
+      //1.0,-1.0,
+      //0.0,1.0,
+      //];
+      //四边形
+	var vertices = [
+	  -1.0,-1.0,
+	   1.0,-1.0,
+	   1.0,1.0,
+	  -1.0,1.0,
+	]
       
       gl.viewport( 0, 0, canvas.width, canvas.height );
 	    gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -37,7 +44,7 @@ window.onload = function init(){
 
 function render(){
 	gl.clear( gl.COLOR_BUFFER_BIT );
-	//gl.drawArrays( gl.TRIANGLE_FAN, 0, 4 );
-	gl.drawArrays( gl.TRIANGLES, 0, 3 );
+	gl.drawArrays( gl.TRIANGLE_FAN, 0, 4 );
+	//gl.drawArrays( gl.TRIANGLES, 0, 3 );三角形
 	//gl.drawArrays( gl.TRIANGLE_FANS, 3, 6 );
 }
