@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Chap3 Demo-Rotating Square</title>
+    <script id="rot-v-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	attribute vec4 vcolor;
+	varying vec4 fColor;
+	uniform float theta;
+
+	void main()
+	{
+		float u = cos( theta );
+		float v = sin( theta );
+
+		gl_Position.x = (vPosition.x * u - vPosition.y * v);
+		gl_Position.y = (vPosition.x * v + vPosition.y * u);
+		gl_Position.z = 0.0;
+		gl_Position.w = 1.0;
+		
+		fColor = vcolor;
+	}
+	</script>
+
+    <script id="rot-f-shader" type="x-shader/x-fragment">
+	precision mediump float;
+	varying vec4 fColor;
+	void main()
+	{
+		gl_FragColor = fColor;
+	}
+	</script>
+
+    <script type="text/javascript" src="../js/common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../js/common/initShaders.js"></script>
+    <script type="text/javascript" src="../js/common/gl-matrix-min.js"></script>
+
+    <script type="text/javascript" src="../js/ch03/rotsquare.js"></script>
+</head>
+
+<body onload="initRotSquare()">
+    <canvas id="rot-canvas" width="512" height="512">你的浏览器不支持HTML5 canvas元素</canvas>
+	<p>慢<input id="Change_speed" type="range" value="0.1" step="0.1" min="0" max="1" onchange="speed();" />快</p>
+	<button id="Change_direction"  onclick="chdirection();">改变方向</button>
+</body>
+
+</html>

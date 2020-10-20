@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<script id="vertex-shader" type="x-shader/x-vertex">
+		attribute vec4 vPosition;
+		void main()
+		{
+			gl_Position = vPosition;
+		}
+		</script>
+		<script id="fragment-shader" type="x-shader/x-fragment">
+		precision mediump float;
+		void main()
+		{
+			gl_FragColor = vec4( 0.0, 0.0, 0.0, 1.0 );
+		}
+		</script>
+		<script type="text/javascript" src="../js/common/webgl-utils.js"></script>
+		<script type="text/javascript" src="../js/common/initShaders.js"></script>
+		<script type="text/javascript" src="../js/common/gl-matrix-min.js"></script>
+		
+		<script type="text/javascript" src="../try-js/circle.js"></script>
+	</head>
+	<body>
+		<canvas id="showcat" width="600" height="600" style="border: solid black;"></canvas>
+		<button id="show" onclick="playdraw();">显示图画</button>
+		<button id="eyes" onclick="change();playdraw();">改变表情</button>
+	</body>
+</html>
